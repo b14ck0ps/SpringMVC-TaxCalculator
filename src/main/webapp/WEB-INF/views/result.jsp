@@ -159,46 +159,46 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td><span id="1st_slab"></span></td>
+                                            <td><span id="1st_slab"></span>Upto 300,000 Taka</td>
                                             <td>0%</td>
-                                            <td><span id="slab_1"></span></td>
-                                            <td><span id="slab_1_tax"></span></td>
+                                            <td><span id="slab_1">${taxCalculator.slab1}</span></td>
+                                            <td><span id="slab_1_tax">${taxCalculator.tax1}</span></td>
                                         </tr>
                                         <tr>
-                                            <td><span id="2nd_slab"></span></td>
+                                            <td><span id="2nd_slab"></span>On the Next 100,000 Taka</td>
                                             <td>5%</td>
-                                            <td><span id="slab_2"></span></td>
-                                            <td><span id="slab_2_tax"></span></td>
+                                            <td><span id="slab_2"></span>${taxCalculator.slab2}</td>
+                                            <td><span id="slab_2_tax"></span>${taxCalculator.tax2}</td>
                                         </tr>
                                         <tr>
-                                            <td><span id="3rd_slab"></span></td>
+                                            <td><span id="3rd_slab"></span>On the Next 300,000 Taka</td>
                                             <td>10%</td>
-                                            <td><span id="slab_3"></span></td>
-                                            <td><span id="slab_3_tax"></span></td>
+                                            <td><span id="slab_3"></span>${taxCalculator.slab3}</td>
+                                            <td><span id="slab_3_tax"></span>${taxCalculator.tax3}</td>
                                         </tr>
                                         <tr>
-                                            <td><span id="4th_slab"></span></td>
+                                            <td><span id="4th_slab"></span>On the Next 400,000 Taka</td>
                                             <td>15%</td>
-                                            <td><span id="slab_4"></span></td>
-                                            <td><span id="slab_4_tax"></span></td>
+                                            <td><span id="slab_4"></span>${taxCalculator.slab4}</td>
+                                            <td><span id="slab_4_tax"></span>${taxCalculator.tax4}</td>
                                         </tr>
                                         <tr>
-                                            <td><span id="5th_slab"></span></td>
+                                            <td><span id="5th_slab"></span>On the Next 500,000 Taka</td>
                                             <td>20%</td>
-                                            <td><span id="slab_5"></span></td>
-                                            <td><span id="slab_5_tax"></span></td>
+                                            <td><span id="slab_5"></span>${taxCalculator.slab5}</td>
+                                            <td><span id="slab_5_tax"></span>${taxCalculator.tax5}</td>
                                         </tr>
                                         <tr>
-                                            <td><span id="6th_slab"></span></td>
+                                            <td><span id="6th_slab"></span>Above</td>
                                             <td>25%</td>
-                                            <td><span id="slab_6"></span></td>
-                                            <td><span id="slab_6_tax"></span></td>
+                                            <td><span id="slab_6"></span>${taxCalculator.slab6}</td>
+                                            <td><span id="slab_6_tax"></span>${taxCalculator.tax6}</td>
                                         </tr>
                                         <tr>
                                             <th>Gross Tax Liability</th>
                                             <td>-</td>
                                             <td>-</td>
-                                            <th><span id="Gross_Tax_1"></span></th>
+                                            <th><span id="Gross_Tax_1"></span>${taxCalculator.grossTaxLiability}</th>
                                         </tr>
                                         </tbody>
                                     </table>

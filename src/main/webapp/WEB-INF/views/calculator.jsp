@@ -85,7 +85,7 @@
                         <tbody>
                         <tr>
                             <th>Eligible Amount</th>
-                            <td><span id="eligible_investment1"></span></td>
+                            <td><span id="eligible_investment1"></span>${taxCalculator.eligibleAmount}</td>
                         </tr>
                         <tr>
                             <td>Investment</td>
