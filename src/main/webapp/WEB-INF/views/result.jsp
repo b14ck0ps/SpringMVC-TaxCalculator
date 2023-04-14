@@ -9,7 +9,7 @@
 <div class="modal fade" id="shop1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content" style="height: 600px">
             <div class="modal-header">
                 <h6>Your Tax has been calculated!</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -233,17 +233,18 @@
                                         <thead>
                                         <tr>
                                             <th>Eligible Amount</th>
-                                            <td><span id="eligible_investment2"></span></td>
+                                            <td><span id="eligible_investment2"></span>${taxCalculator.eligibleAmount}
+                                            </td>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
                                             <th>Accepted Investment</th>
-                                            <td id="investment_show"></td>
+                                            <td id="investment_show">${rebateCalculator.acceptedInvestment}</td>
                                         </tr>
                                         <tr>
                                             <th>Rebate</th>
-                                            <td><span id="rebate"></span></td>
+                                            <td><span id="rebate"></span>${rebateCalculator.rebate}</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -278,15 +279,15 @@
                                         <tbody>
                                         <tr>
                                             <th>Gross Tax Liability (BDT)</th>
-                                            <td id="Gross_Tax_2"></td>
+                                            <td id="Gross_Tax_2">${taxCalculator.grossTaxLiability}</td>
                                         </tr>
                                         <tr>
                                             <th>Tax after Rebate (BDT)</th>
-                                            <td id="tax_after_rebate"></td>
+                                            <td id="tax_after_rebate">${rebateCalculator.taxAfterRebate}</td>
                                         </tr>
                                         <tr>
                                             <th>Net Tax Payable (BDT)<sup>*</sup></th>
-                                            <td id="net_tax"></td>
+                                            <td id="net_tax">${netTaxByZoneCalculator.netTax}</td>
                                         </tr>
                                         </tbody>
                                     </table>

@@ -3,8 +3,10 @@ package main.app.controller;
 import main.app.domain.SalaryInformation;
 import main.app.service.Enums.PayerCategory;
 import main.app.service.Enums.PayerZone;
+import main.app.service.calculator.NetTaxByZoneCalculator;
 import main.app.service.calculator.TaxCalculator;
 import main.app.service.calculator.TaxableIncome;
+import main.app.service.calculator.RebateCalculator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -48,6 +50,12 @@ public class CalculatorController {
 
         TaxCalculator taxCalculator = new TaxCalculator(incomeCalculator.getTotalTaxableIncome(), salaryInformation.getPayerCategory());
         model.addAttribute("taxCalculator", taxCalculator);
+
+        RebateCalculator rebateCalculator = new RebateCalculator(taxCalculator.getGrossTaxLiability(), incomeCalculator.getTotalTaxableIncome(), salaryInformation.getInvestment());
+        model.addAttribute("rebateCalculator", rebateCalculator);
+
+        NetTaxByZoneCalculator netTaxByZoneCalculator = new NetTaxByZoneCalculator(rebateCalculator.getTaxAfterRebate(), salaryInformation.getPayerZone());
+        model.addAttribute("netTaxByZoneCalculator", netTaxByZoneCalculator);
 
         return "calculator";
     }
