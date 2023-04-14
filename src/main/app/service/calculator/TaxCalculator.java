@@ -81,4 +81,52 @@ public class TaxCalculator {
     public double getEligibleAmount() {
         return eligibleAmount;
     }
+
+    public double getSlab1() {
+        return slab1;
+    }
+
+    public double getSlab2() {
+        return slab2;
+    }
+
+    public double getSlab3() {
+        return slab3;
+    }
+
+    public double getSlab4() {
+        return slab4;
+    }
+
+    public double getSlab5() {
+        return slab5;
+    }
+
+    public double getSlab6() {
+        return slab6;
+    }
+
+    public double getTax1() {
+        return tax1;
+    }
+
+    public double getTax2() {
+        return tax2;
+    }
+
+    public double getTax3() {
+        return tax3;
+    }
+
+    public double getTax4() {
+        return tax4;
+    }
+
+    public double getTax5() {
+        return tax5;
+    }
+
+    public double getTax6() {
+        return tax6;
+    }
 }

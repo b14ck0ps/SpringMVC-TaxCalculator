@@ -2,10 +2,13 @@ package main.app.service.calculator;
 
 public class TaxableIncome {
     private final double basicSalary;
+    private final double houseRent;
     private final double houseRentExemption;
     private final double houseRentTaxable;
+    private final double medicalAllowance;
     private final double medicalExemption;
     private final double medicalTaxable;
+    private final double conveyanceAllowance;
     private final double conveyanceExemption;
     private final double conveyanceTaxable;
     private final double incentive;
@@ -15,7 +18,9 @@ public class TaxableIncome {
     private double totalIncome = 0;
 
     public TaxableIncome(double basicSalary, double houseRent, double medicalAllowance, double conveyanceAllowance, double incentive, double festivalBonus) {
-
+        this.houseRent = houseRent;
+        this.medicalAllowance = medicalAllowance;
+        this.conveyanceAllowance = conveyanceAllowance;
         //calculate total income
         totalIncome = basicSalary + houseRent + medicalAllowance + conveyanceAllowance + incentive + festivalBonus;
 
@@ -73,5 +78,17 @@ public class TaxableIncome {
 
     public double getTotalIncome() {
         return totalIncome;
+    }
+
+    public double getHouseRent() {
+        return houseRent;
+    }
+
+    public double getMedicalAllowance() {
+        return medicalAllowance;
+    }
+
+    public double getConveyanceAllowance() {
+        return conveyanceAllowance;
     }
 }

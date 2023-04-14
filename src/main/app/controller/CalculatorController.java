@@ -3,7 +3,8 @@ package main.app.controller;
 import main.app.domain.SalaryInformation;
 import main.app.service.Enums.PayerCategory;
 import main.app.service.Enums.PayerZone;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import main.app.service.calculator.TaxCalculator;
+import main.app.service.calculator.TaxableIncome;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -42,6 +43,12 @@ public class CalculatorController {
     @RequestMapping("/calculate")
     public String calculate(Model model, SalaryInformation salaryInformation) {
         model.addAttribute("salaryInformation", salaryInformation);
+        TaxableIncome incomeCalculator = new TaxableIncome(salaryInformation.getBasicSalary(), salaryInformation.getHouseRent(), salaryInformation.getMedicalAllowance(), salaryInformation.getConveyanceAllowance(), salaryInformation.getIncentive(), salaryInformation.getFestivalBonus());
+        model.addAttribute("incomeCalculator", incomeCalculator);
+
+        TaxCalculator taxCalculator = new TaxCalculator(incomeCalculator.getTotalTaxableIncome(), salaryInformation.getPayerCategory());
+        model.addAttribute("taxCalculator", taxCalculator);
+
         return "calculator";
     }
 }

@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <th>Total</th>
-                            <td><span id="total_income"></span></td>
+                            <td><span id="total_income"></span>${incomeCalculator.totalIncome}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -83,6 +83,10 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-dark table-sm">
                         <tbody>
+                        <tr>
+                            <th>Eligible Amount</th>
+                            <td><span id="eligible_investment1"></span></td>
+                        </tr>
                         <tr>
                             <td>Investment</td>
                             <td><form:input path="investment" type="number" value="${investment}"/></td>
