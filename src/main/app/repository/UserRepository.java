@@ -51,4 +51,14 @@ public class UserRepository {
         session.delete(user);
         return true;
     }
+
+    public User findByEmail(String email) {
+        Session session = sessionFactory.getCurrentSession();
+        TypedQuery<User> query = session.createQuery("FROM User WHERE email = :email", User.class);
+        query.setParameter("email", email);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getSingleResult();
+    }
 }

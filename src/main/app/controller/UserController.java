@@ -1,6 +1,9 @@
 package main.app.controller;
 
+import javax.servlet.http.HttpSession;
+
 import main.app.domain.User;
+import main.app.dto.LoginDto;
 import main.app.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,5 +31,27 @@ public class UserController {
         }
         UserService.create(user);
         return "redirect:/login";
+    }
+
+    @RequestMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("loginDto", new LoginDto());
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@Valid @ModelAttribute("LoginDto") LoginDto loginDto, BindingResult bindingResult, HttpSession session) throws SQLException {
+        if (bindingResult.hasErrors()) {
+            //session error
+            session.setAttribute("error", "Invalid email or password");
+            return "redirect:/user/login";
+        }
+        if (UserService.IsAuthenticate(loginDto.getEmail(), loginDto.getPassword())) {
+            session.removeAttribute("error");
+            session.setAttribute("user", UserService.findByEmail(loginDto.getEmail()));
+            return "redirect:/";
+        }
+        session.setAttribute("error", "Invalid email or password");
+        return "redirect:/user/login";
     }
 }

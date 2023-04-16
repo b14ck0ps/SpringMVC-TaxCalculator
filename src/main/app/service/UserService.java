@@ -39,4 +39,17 @@ public class UserService {
         return userRepository.delete(user);
     }
 
+    public static User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public static boolean IsAuthenticate(String email, String password) {
+        User user = findByEmail(email);
+        if (user != null) {
+            if (user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
