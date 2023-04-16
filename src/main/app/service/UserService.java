@@ -13,29 +13,29 @@ import java.util.List;
 @Transactional
 public class UserService {
 
-    private UserRepository userRepository;
+    private static UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public List<User> list() {
+    public static List<User> list() {
         return userRepository.findAll();
     }
 
-    public User get(Long id) {
+    public static User get(Long id) {
         return userRepository.findById(id);
     }
 
-    public boolean create(User user) {
+    public static boolean create(User user) {
         return userRepository.save(user);
     }
 
-    public boolean update(User user) {
+    public static boolean update(User user) {
         return userRepository.update(user);
     }
 
-    public boolean delete(User user) {
+    public static boolean delete(User user) {
         return userRepository.delete(user);
     }
 

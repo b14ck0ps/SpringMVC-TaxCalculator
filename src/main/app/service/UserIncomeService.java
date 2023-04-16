@@ -10,29 +10,29 @@ import java.util.List;
 @Service
 @Transactional
 public class UserIncomeService {
-    private UserIncomeRepository userIncomeRepository;
+    private static UserIncomeRepository userIncomeRepository;
 
     public UserIncomeService(UserIncomeRepository userIncomeRepository) {
         this.userIncomeRepository = userIncomeRepository;
     }
 
-    public List<UserIncome> findAll() {
+    public static List<UserIncome> findAll() {
         return userIncomeRepository.findAll();
     }
 
-    public UserIncome findById(int id) {
+    public static UserIncome findById(int id) {
         return userIncomeRepository.findById(id);
     }
 
-    public void save(UserIncome userIncome) {
+    public static void save(UserIncome userIncome) {
         userIncomeRepository.save(userIncome);
     }
 
-    public void update(UserIncome userIncome) {
+    public static void update(UserIncome userIncome) {
         userIncomeRepository.update(userIncome);
     }
 
-    public void delete(UserIncome userIncome) {
+    public static void delete(UserIncome userIncome) {
         userIncomeRepository.delete(userIncome);
     }
 
