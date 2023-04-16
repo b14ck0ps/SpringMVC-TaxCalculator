@@ -3,7 +3,9 @@ package main.app.controller;
 import javax.servlet.http.HttpSession;
 
 import main.app.domain.User;
+import main.app.domain.UserIncome;
 import main.app.dto.LoginDto;
+import main.app.service.UserIncomeService;
 import main.app.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,18 @@ public class UserController {
     public String user(Model model) {
         model.addAttribute("user", new User());
         return "register";
+    }
+
+    @RequestMapping("/add-tax-info")
+    public String addTaxInfo(Model model) {
+        model.addAttribute("userIncome", new UserIncome());
+        return "add-tax-info";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("user");
+        return "redirect:/";
     }
 
     @PostMapping("/register")
@@ -53,5 +67,16 @@ public class UserController {
         }
         session.setAttribute("error", "Invalid email or password");
         return "redirect:/user/login";
+    }
+
+    @PostMapping("/userIncome/save")
+    public String saveUserIncome(@Valid @ModelAttribute("userIncome") UserIncome userIncome, BindingResult bindingResult, HttpSession session) throws SQLException {
+        if (bindingResult.hasErrors()) {
+            return "add-tax-info";
+        }
+        User user = (User) session.getAttribute("user");
+        userIncome.setUser(user);
+        UserIncomeService.save(userIncome);
+        return "redirect:/";
     }
 }
