@@ -1,6 +1,6 @@
 package main.app.controller;
 
-import main.app.domain.SalaryInformation;
+import main.app.dto.SalaryInformation;
 import main.app.service.Enums.PayerCategory;
 import main.app.service.Enums.PayerZone;
 import main.app.service.calculator.NetTaxByZoneCalculator;

@@ -1,4 +1,4 @@
-package main.app.domain;
+package main.app.dto;
 
 import main.app.service.Enums.PayerCategory;
 import main.app.service.Enums.PayerZone;
