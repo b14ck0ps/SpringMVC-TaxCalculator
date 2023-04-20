@@ -25,14 +25,17 @@ public class HomeController {
         List<UserIncome> userIncomeList = UserIncomeService.findById(user.getUserId());
         List<TaxInfo> taxInfoList = TaxInfoService.findById(user.getUserId());
 
-        List<IncomeTaxInfo> incomeTaxInfoList = new ArrayList<>();
-        for (int i = 0; i < userIncomeList.size(); i++) {
-            UserIncome userIncome = userIncomeList.get(i);
-            TaxInfo taxInfo = i < taxInfoList.size() ? taxInfoList.get(i) : null;
-            incomeTaxInfoList.add(new IncomeTaxInfo(userIncome, taxInfo));
+        if (userIncomeList != null && taxInfoList != null) {
+            List<IncomeTaxInfo> incomeTaxInfoList = new ArrayList<>();
+            for (int i = 0; i < userIncomeList.size(); i++) {
+                UserIncome userIncome = userIncomeList.get(i);
+                TaxInfo taxInfo = i < taxInfoList.size() ? taxInfoList.get(i) : null;
+                incomeTaxInfoList.add(new IncomeTaxInfo(userIncome, taxInfo));
+            }
+            model.addAttribute("incomeTaxInfoList", incomeTaxInfoList);
+        } else {
+            model.addAttribute("incomeTaxInfoList", null);
         }
-
-        model.addAttribute("incomeTaxInfoList", incomeTaxInfoList);
         return "home";
     }
 }
