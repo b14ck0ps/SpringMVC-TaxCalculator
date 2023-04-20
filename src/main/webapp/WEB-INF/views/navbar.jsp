@@ -25,9 +25,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/calculator/">Calculator</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/user/logout">Logout</a>
-                </li>
+                <c:if test="${not empty sessionScope.user}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/user/logout">Logout</a>
+                    </li>
+                </c:if>
+                <c:if test="${empty sessionScope.user}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/user/register">Register</a>
+                    </li>
+                </c:if>
             </ul>
         </div>
     </div>

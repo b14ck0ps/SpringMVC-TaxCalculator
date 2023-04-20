@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
 </head>
 <body>
+<%@include file="navbar.jsp" %>
 
 <div class="container">
     <div class="row justify-content-center">
