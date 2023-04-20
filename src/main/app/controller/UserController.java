@@ -49,7 +49,7 @@ public class UserController {
             return "register";
         }
         UserService.create(user);
-        return "redirect:/login";
+        return "redirect:/user/login";
     }
 
     @RequestMapping("/login")
