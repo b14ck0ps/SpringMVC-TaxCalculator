@@ -20,7 +20,7 @@ public class TaxInfoService {
         return taxInfoRepository.findAll();
     }
 
-    public static TaxInfo findById(int id) {
+    public static List<TaxInfo> findById(int id) {
         return taxInfoRepository.findById(id);
     }
 

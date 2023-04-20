@@ -29,14 +29,14 @@ public class UserIncomeRepository {
     }
 
 
-    public UserIncome findById(int user_id) {
+    public List<UserIncome> findById(int user_id) {
         Session session = sessionFactory.getCurrentSession();
         TypedQuery<UserIncome> query = session.createQuery("SELECT ui FROM UserIncome ui WHERE ui.user.userId = :userId", UserIncome.class);
         query.setParameter("userId", user_id);
         if (query.getResultList().size() == 0) {
             return null;
         }
-        return query.getSingleResult();
+        return query.getResultList();
     }
 
 

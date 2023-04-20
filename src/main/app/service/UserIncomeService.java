@@ -20,7 +20,7 @@ public class UserIncomeService {
         return userIncomeRepository.findAll();
     }
 
-    public static UserIncome findById(int id) {
+    public static List<UserIncome> findById(int id) {
         return userIncomeRepository.findById(id);
     }
 

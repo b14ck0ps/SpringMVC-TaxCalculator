@@ -30,14 +30,14 @@ public class TaxInfoRepository {
         return query.getResultList();
     }
 
-    public TaxInfo findById(int user_id) {
+    public List<TaxInfo> findById(int user_id) {
         Session session = sessionFactory.getCurrentSession();
         TypedQuery<TaxInfo> query = session.createQuery("SELECT ti FROM TaxInfo ti WHERE ti.user.userId = :userId", TaxInfo.class);
         query.setParameter("userId", user_id);
         if (query.getResultList().size() == 0) {
             return null;
         }
-        return query.getSingleResult();
+        return query.getResultList();
     }
 
     public void save(TaxInfo taxInfo) {
