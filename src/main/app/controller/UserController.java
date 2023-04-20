@@ -1,12 +1,16 @@
 package main.app.controller;
 
-import javax.servlet.http.HttpSession;
-
+import main.app.domain.TaxInfo;
 import main.app.domain.User;
 import main.app.domain.UserIncome;
 import main.app.dto.LoginDto;
+import main.app.service.TaxInfoService;
 import main.app.service.UserIncomeService;
 import main.app.service.UserService;
+import main.app.service.calculator.NetTaxByZoneCalculator;
+import main.app.service.calculator.RebateCalculator;
+import main.app.service.calculator.TaxCalculator;
+import main.app.service.calculator.TaxableIncome;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.sql.SQLException;
 
@@ -76,7 +81,27 @@ public class UserController {
         }
         User user = (User) session.getAttribute("user");
         userIncome.setUser(user);
+
         UserIncomeService.save(userIncome);
+        //Calculate tax
+        TaxableIncome incomeCalculator = new TaxableIncome(userIncome.getBasicSalary(), userIncome.getHouseRent(), userIncome.getMedicalAllowance(), userIncome.getConveyanceAllowance(), userIncome.getIncentive(), userIncome.getFestivalBonus());
+        TaxCalculator taxCalculator = new TaxCalculator(incomeCalculator.getTotalTaxableIncome(), userIncome.getPayerCategory());
+
+        RebateCalculator rebateCalculator = new RebateCalculator(taxCalculator.getGrossTaxLiability(), incomeCalculator.getTotalTaxableIncome(), userIncome.getInvestment());
+
+        NetTaxByZoneCalculator netTaxByZoneCalculator = new NetTaxByZoneCalculator(rebateCalculator.getTaxAfterRebate(), userIncome.getPayerZone());
+
+        TaxInfo taxInfo = new TaxInfo();
+        taxInfo.setTotalTaxableIncome(incomeCalculator.getTotalTaxableIncome());
+        taxInfo.setGrossTaxLiability(taxCalculator.getGrossTaxLiability());
+        taxInfo.setTaxAfterRebate(rebateCalculator.getTaxAfterRebate());
+        taxInfo.setNetTax(netTaxByZoneCalculator.getNetTax());
+        taxInfo.setRebate(rebateCalculator.getRebate());
+        taxInfo.setAcceptedInvestment(rebateCalculator.getAcceptedInvestment());
+        taxInfo.setEligibleAmount(taxCalculator.getEligibleAmount());
+        taxInfo.setUser(user);
+        TaxInfoService.save(taxInfo);
+
         return "redirect:/home";
     }
 }
