@@ -1,5 +1,7 @@
 package main.app.service.calculator;
 
+import java.text.DecimalFormat;
+
 public class RebateCalculator extends TaxCalculator {
     private double AcceptedInvestment;
     private double Rebate;
@@ -19,7 +21,7 @@ public class RebateCalculator extends TaxCalculator {
         Rebate = Math.round(investment * 0.15);
 
         // Calculate Tax After Rebate
-        TaxAfterRebate = GrossTaxLiability - Rebate;
+        TaxAfterRebate = Double.parseDouble(new DecimalFormat("#.##").format(GrossTaxLiability - Rebate));
     }
 
     public double getAcceptedInvestment() {
