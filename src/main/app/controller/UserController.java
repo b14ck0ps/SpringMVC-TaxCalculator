@@ -35,7 +35,7 @@ public class UserController {
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @PostMapping("/register")
@@ -63,7 +63,7 @@ public class UserController {
         if (UserService.IsAuthenticate(loginDto.getEmail(), loginDto.getPassword())) {
             session.removeAttribute("error");
             session.setAttribute("user", UserService.findByEmail(loginDto.getEmail()));
-            return "redirect:/";
+            return "redirect:/home";
         }
         session.setAttribute("error", "Invalid email or password");
         return "redirect:/user/login";
@@ -77,6 +77,6 @@ public class UserController {
         User user = (User) session.getAttribute("user");
         userIncome.setUser(user);
         UserIncomeService.save(userIncome);
-        return "redirect:/";
+        return "redirect:/home";
     }
 }
