@@ -1,15 +1,14 @@
 package main.app.repository;
 
-import java.util.List;
-
-import javax.persistence.TypedQuery;
-
 import main.app.domain.UserIncome;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 
 @Repository
@@ -29,10 +28,17 @@ public class UserIncomeRepository {
         return query.getResultList();
     }
 
-    public UserIncome findById(int id) {
+
+    public UserIncome findById(int user_id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(UserIncome.class, id);
+        TypedQuery<UserIncome> query = session.createQuery("SELECT ui FROM UserIncome ui WHERE ui.user.userId = :userId", UserIncome.class);
+        query.setParameter("userId", user_id);
+        if (query.getResultList().size() == 0) {
+            return null;
+        }
+        return query.getSingleResult();
     }
+
 
     public void save(UserIncome userIncome) {
         Session session = sessionFactory.getCurrentSession();
