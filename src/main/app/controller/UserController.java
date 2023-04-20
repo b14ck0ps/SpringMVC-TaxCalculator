@@ -40,7 +40,7 @@ public class UserController {
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
-        return "redirect:/login";
+        return "redirect:/user/login";
     }
 
     @PostMapping("/register")

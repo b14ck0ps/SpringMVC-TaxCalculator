@@ -26,7 +26,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/calculator/">Calculator</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/Logout/">Logout</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/user/logout">Logout</a>
                 </li>
             </ul>
         </div>
