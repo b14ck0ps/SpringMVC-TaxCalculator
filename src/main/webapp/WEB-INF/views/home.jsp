@@ -80,6 +80,31 @@
                 Info
             </button>
         </div>
+        <div class="p-3 border my-3">
+            <span class="fw-bold">Total Taxable Income: </span>
+            <span>${taxInfo.totalTaxableIncome} Taka</span>
+            <br>
+            <span class="fw-bold" for="accepted_investment">Accepted Investment: </span>
+            <span>${taxInfo.acceptedInvestment} Taka</span>
+            <br>
+            <br>
+            <span class="fw-bold">Rebate: </span>
+            <span>${taxInfo.rebate} Taka</span>
+            <br>
+            <span class="fw-bold">Tax After Rebate: </span>
+            <span>${taxInfo.taxAfterRebate} Taka</span>
+            <br>
+            <br>
+            <span class="fw-bold">Eligible Amount: </span>
+            <span>${taxInfo.eligibleAmount} Taka</span>
+            <br>
+            <span class="fw-bold">Gross Liability: </span>
+            <span>${taxInfo.grossTaxLiability} Taka</span>
+            <br>
+            <span class="fw-bold">Net Tax: </span>
+            <span>${taxInfo.netTax} Taka</span>
+            <br>
+        </div>
     </c:if>
 </div>
 
