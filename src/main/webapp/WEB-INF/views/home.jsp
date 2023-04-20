@@ -53,60 +53,76 @@
                 <span>${userIncome.payerZone}</span>
             </div>
         </div>
-        <div class="p-3 border my-3">
-            <span class="fw-bold" for="basic_salary">Basic Salary: </span>
-            <span>${userIncome.basicSalary} Taka</span>
-            <br>
-            <span class="fw-bold" for="house_rent">House Rent: </span>
-            <span>${userIncome.houseRent} Taka</span>
-            <br>
-            <span class="fw-bold" for="medical_allowance">Medical Allowance: </span>
-            <span>${userIncome.medicalAllowance} Taka</span>
-            <br>
-            <span class="fw-bold" for="conveyance_allowance">Conveyance Allowance: </span>
-            <span>${userIncome.conveyanceAllowance} Taka</span>
-            <br>
-            <span class="fw-bold" for="incentive">Incentive / OT: </span>
-            <span>${userIncome.incentive} Taka</span>
-            <br>
-            <span class="fw-bold" for="festivalBonus">Festival Bonus: </span>
-            <span>${userIncome.festivalBonus} Taka</span>
-            <br>
-            <span class="fw-bold" for="investment">Investment : </span>
-            <span>${userIncome.investment} Taka</span>
-            <br>
-            <button class="btn btn-primary mt-3"
-                    onclick="window.location.href='${pageContext.request.contextPath}/user/edit-tax-info/'"> Edit
-                Info
-            </button>
+        <div class="detail_container">
+            <div class="income-details p-3 border my-3">
+                <span class="fw-bold" for="basic_salary">Basic Salary: </span>
+                <span>${userIncome.basicSalary} Taka</span>
+                <br>
+                <span class="fw-bold" for="house_rent">House Rent: </span>
+                <span>${userIncome.houseRent} Taka</span>
+                <br>
+                <span class="fw-bold" for="medical_allowance">Medical Allowance: </span>
+                <span>${userIncome.medicalAllowance} Taka</span>
+                <br>
+                <span class="fw-bold" for="conveyance_allowance">Conveyance Allowance: </span>
+                <span>${userIncome.conveyanceAllowance} Taka</span>
+                <br>
+                <span class="fw-bold" for="incentive">Incentive / OT: </span>
+                <span>${userIncome.incentive} Taka</span>
+                <br>
+                <span class="fw-bold" for="festivalBonus">Festival Bonus: </span>
+                <span>${userIncome.festivalBonus} Taka</span>
+                <br>
+                <span class="fw-bold" for="investment">Investment : </span>
+                <span>${userIncome.investment} Taka</span>
+                <br>
+            </div>
+            <div class="tax-details p-3 border my-3">
+                <span class="fw-bold">Total Taxable Income: </span>
+                <span>${taxInfo.totalTaxableIncome} Taka</span>
+                <br>
+                <span class="fw-bold" for="accepted_investment">Accepted Investment: </span>
+                <span>${taxInfo.acceptedInvestment} Taka</span>
+                <br>
+                <br>
+                <span class="fw-bold">Rebate: </span>
+                <span>${taxInfo.rebate} Taka</span>
+                <br>
+                <span class="fw-bold">Tax After Rebate: </span>
+                <span>${taxInfo.taxAfterRebate} Taka</span>
+                <br>
+                <br>
+                <span class="fw-bold">Eligible Amount: </span>
+                <span>${taxInfo.eligibleAmount} Taka</span>
+                <br>
+                <span class="fw-bold">Gross Liability: </span>
+                <span>${taxInfo.grossTaxLiability} Taka</span>
+                <br>
+                <span class="fw-bold">Net Tax: </span>
+                <span>${taxInfo.netTax} Taka</span>
+                <br>
+            </div>
         </div>
-        <div class="p-3 border my-3">
-            <span class="fw-bold">Total Taxable Income: </span>
-            <span>${taxInfo.totalTaxableIncome} Taka</span>
-            <br>
-            <span class="fw-bold" for="accepted_investment">Accepted Investment: </span>
-            <span>${taxInfo.acceptedInvestment} Taka</span>
-            <br>
-            <br>
-            <span class="fw-bold">Rebate: </span>
-            <span>${taxInfo.rebate} Taka</span>
-            <br>
-            <span class="fw-bold">Tax After Rebate: </span>
-            <span>${taxInfo.taxAfterRebate} Taka</span>
-            <br>
-            <br>
-            <span class="fw-bold">Eligible Amount: </span>
-            <span>${taxInfo.eligibleAmount} Taka</span>
-            <br>
-            <span class="fw-bold">Gross Liability: </span>
-            <span>${taxInfo.grossTaxLiability} Taka</span>
-            <br>
-            <span class="fw-bold">Net Tax: </span>
-            <span>${taxInfo.netTax} Taka</span>
-            <br>
-        </div>
+        <button class="btn btn-primary mt-3"
+                onclick="window.location.href='${pageContext.request.contextPath}/user/add-tax-info/'"> Add New Info
+            Info
+        </button>
     </c:if>
 </div>
 
 </body>
 </html>
+
+<style>
+    .detail_container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .income-details,
+    .tax-details {
+        flex-basis: 48%;
+    }
+
+</style>
